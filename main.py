@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 origins = [
-    "http://localhost",
+    "http://localhost:3000",
     "http://localhost:8080",
 ]
 
@@ -22,6 +22,6 @@ def read_root():
     return {"Hello": "World"}
 
 
-@app.get("/llm_output")
-def llm_output():
+@app.post("/response")
+async def response(text: str):
     return {"isValid": True, "Response": "Example Response"}
